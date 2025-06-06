@@ -27,12 +27,12 @@
             height: 250px;
             object-fit: cover;
         }
-        /* .cart-icon {
+        .cart-icon {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
-        } */
+        }
         .badge-notification {
             position: absolute;
             top: -5px;
@@ -46,8 +46,8 @@
         .header {
             background-color: #ff85a2;
             color: white;
-            /* padding: 20px 0; */
-            /* margin-bottom: 30px; */
+            padding: 20px 0;
+            margin-bottom: 30px;
         }
         .footer {
             background-color: #ff85a2;
@@ -63,27 +63,6 @@
 </head>
 <body>
     <!-- Header -->
-    <!-- <header class="header text-center">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Designer Kids Clothing</h1>
-            <nav>
-                <ul>
-                    <li><a href="#" class="text-gray-700 hover:text-black">Home</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-black">Boys</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-black">Girls</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-black">Login</a></li>
-                    <li class="cart-icon">
-                        <a class="btn" data-bs-toggle="modal" data-bs-target="#cartModal">
-                             &nbsp;<i class="fas fa-shopping-cart"></i>
-                            <span id="cartCount" class="badge bg-danger badge-notification">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header> -->
-
-
     <header class="bg-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 class="text-2xl font-bold">Designer Kids Clothing</h1>
@@ -112,9 +91,17 @@
         </button>
     </div> -->
 
+    <!-- Shopping Cart Icon -->
+    <div class="cart-icon">
+        <button class="btn btn-primary position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+            Cart &nbsp;<i class="fas fa-shopping-cart"></i>
+            <span id="cartCount" class="badge bg-danger badge-notification">0</span>
+        </button>
+    </div>
+
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-        <h2 class="text-3xl font-semibold mb-4">Girls' New Arrivals</h2>
+        <h2 class="text-3xl font-semibold mb-4">Boys' New Arrivals</h2>
         <p class="text-gray-600 mb-4">Free Shipping on orders over HK$1000</p>
 
         <!-- Filter and Sort -->
@@ -122,8 +109,8 @@
             <div class="flex space-x-2">
                 <button class="filter-btn px-4 py-2 border rounded" data-category="all">All</button>
                 <button class="filter-btn px-4 py-2 border rounded" data-category="shirts">Shirts</button>
-                <button class="filter-btn px-4 py-2 border rounded" data-category="dress">Dress</button>
                 <button class="filter-btn px-4 py-2 border rounded" data-category="pants">Pants</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="hoodies">Hoodies</button>
             </div>
             <select id="sort" class="border rounded px-4 py-2">
                 <option value="new">New Arrivals</option>
@@ -259,12 +246,12 @@
     <script>
         // Sample product data
         const products = [
-            { id: 1, name: "藍白拼色韓服", category: "dress", price: 398, image: "../img/girl 藍白拼色韓服1.webp" },
-            { id: 2, name: "夢幻水彩花裙", category: "dress", price: 383, image: "../img/girl 夢幻水彩花裙1.webp"  },
-            { id: 3, name: "卡皮巴拉摘蘋果T恤", category: "shirts", price: 263, image: "../img/girl 卡皮巴拉摘蘋果T恤1.webp" },
-            { id: 4, name: "蕾絲薄紗公主裙", category: "dress", price: 348, image: "../img/girl 蕾絲薄紗公主裙1.webp" },
-            { id: 5, name: "蝴蝶結連衣裙", category: "dress", price: 393, image: "../img/girl 蝴蝶結連衣裙.webp" },
-            { id: 6, name: "純綿白色運動褲", category: "pants", price: 248, image: "../img/girl 純綿白色運動褲1.webp" },
+            { id: 1, name: "刺繡亞麻褲", category: "pants", price: 398, image: "../img/boy bluejeans front.webp" },
+            { id: 2, name: "文字印花米色休閒褲", category: "pants", price: 383, image: "../img/boy brownjeans front.webp"  },
+            { id: 3, name: "可愛消防車T恤", category: "shirts", price: 263, image: "../img/boy carT front.webp" },
+            { id: 4, name: "彩色恐龍T恤", category: "shirts", price: 253, image: "../img/boy colorT front.webp" },
+            { id: 5, name: "拼色運動衣", category: "hoodies", price: 393, image: "../img/boy green hoodie front.webp" },
+            { id: 6, name: "動物方城市運動衫", category: "hoodies", price: 368, image: "../img/boy white hoodie front.webp" },
             ];
 
         // Shopping cart data
