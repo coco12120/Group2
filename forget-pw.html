@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+            margin: 0;
+        }
+        .forgot-password {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0px;
+        }
+        .input-em{
+            text-align: left;
+            width: 350px;
+        }
+        .email{
+            margin:5px;
+            width: 300px;
+        }
+        .submit{
+            margin:5px;
+        }
+        .submit:hover{color: white;background-color: #333;}
+        </style>
+</head>
+<body>
+    <div class="forgot-password">
+    <h2>忘記密碼</h2><br>
+    <button class="input-em">
+        <label for="email">請輸入已登記的電郵地址</label><br>
+        <input type="email" id="email" class="email" placeholder="e.g.abc@aaa.com"><br>
+        <div id="emailError" class="error"></div>
+        <input type="submit" id="submit" class="submit" value="確定">
+    </button>
+</div>
+<script>
+    let form=document.querySelector("submit")
+    form.addEventListener("submit", function(e) {
+                
+                    alert('密碼已傳送至電郵');
+    
+                }
+            );
+</script>
+</body>
+</html>

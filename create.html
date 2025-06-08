@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        .create {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0px;
+        }
+        
+        button{width: 350px;text-align: left;margin-top: 15px;padding: 5%;}
+        label{font-size: 16px;}
+        input{width: 300px;text-align: left;font-size: 14px;}
+         #submit  {width: 50px;text-align: center;margin-top: 20px ;}
+        #submit:hover{background-color: #333;color: white;}
+        #passwordMatchMessage{color: red;}
+
+    </style>
+</head>
+<body>
+    <div class="create">
+    <h2>創建帳號</h2>
+    <button>
+        <label for="username">使用者名稱</label><br>
+        <input type="text" name="username" id="username" placeholder="陳大明"required><br>
+        <label for="password">密碼</label><br>
+        <input type="password" name="password" id="password"required><br>
+        <label for="password2">再次輸入密碼</label><br>
+        <input type="password" name="password2" id="password2"required>
+        <span id="passwordMatchMessage"></span><br>
+
+        <label for="address">地址</label><br>
+        <input type="text" name="address" id="address" placeholder="香港XX區YY道BB樓XX樓YY室"required><br>
+        <label for="email">電郵地址</label><br>
+        <input type="email" name="email" id="email" placeholder="abc@email.com"><br>
+        <label for="phone">電話</label><br>
+        <input type="tel" name="phone" id="phone" placeholder=請輸入8位數字電話號碼 maxlength="8"><br>
+
+        <input type="submit" name="submit" id="submit" value="確定"><br>
+    </button>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('password2');
+            const messageElement = document.getElementById('passwordMatchMessage');
+            const form = document.getElementById('passwordForm');
+            
+            // 實時驗證密碼是否匹配
+            confirmPasswordInput.addEventListener('input', function() {
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    messageElement.textContent = '密碼不匹配';
+                    messageElement.className = 'error';
+                } else {
+                    messageElement.textContent = '密碼匹配';
+                    messageElement.className = 'success';
+                }
+            });
+            
+            
+        });
+           
+    </script>
+</body>
+</html>
