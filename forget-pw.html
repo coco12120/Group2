@@ -51,13 +51,10 @@
     </button>
 </div>
 <script>
-    let form=document.querySelector("submit")
-    form.addEventListener("submit", function(e) {
-                
-                    alert('密碼已傳送至電郵');
-    
-                }
-            );
+    let btn=document.getElementById('submit');
+        btn.addEventListener('click',function() {
+            alert("密碼已傳至你登記的電郵地址")
+        });
 </script>
 </body>
 </html>
