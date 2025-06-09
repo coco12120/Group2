@@ -1,36 +1,76 @@
-<!-- ----------------------------------------------------------------------------------- -->
-<!-- --------------------------蕾絲薄紗公主裙--------------------------------------------- -->
- <!-- ------------------------------------------------------------------------------------ -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>蕾絲薄紗公主裙</title>
-    <!-- Bootstrap 4.6 CSS -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="Group2-main/assets/images/logo.png"
+    />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- linked CSS -->
-     <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-    <link rel="stylesheet" href="product-details-page.css" /> 
-
+    <!-- link to css -->
+    <link rel="stylesheet" href="product-details-page.css" />
   </head>
-  <body
-  class= "zen-kaku-gothic-new-regular">
-    <!-- 主容器，使用 Bootstrap 的 container 類確保內容居中 -->
+  <body class="zen-kaku-gothic-new-regular">
+    <!-- 頂部導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Designer Kids Clothing</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">女裝</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">男裝</a>
+            </li>
+          </ul>
+          <!-- 購物車按鈕 -->
+          <button
+            class="btn btn-outline-primary position-relative"
+            data-bs-toggle="modal"
+            data-bs-target="#cartModal"
+          >
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartCount" class="badge bg-danger badge-notification"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 主容器 -->
     <div class="container my-4">
       <div class="row">
-        <!-- 左邊相 -->
+        <!-- Bootstrap productCarousel，刪data-ride 唔俾自動轉相 -->
         <div class="col-md-6">
-          <!-- Bootstrap productCarousel，刪data-ride 唔俾自動轉相 -->
           <div id="productCarousel" class="carousel slide">
             <div class="carousel-inner">
-              <!-- 左相 -->
               <div class="carousel-item active">
+                <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
                 <img
                   src="Group2-main/assets/images/girl 蕾絲薄紗公主裙1.webp"
                   class="d-block w-100"
@@ -38,6 +78,7 @@
                 />
               </div>
               <div class="carousel-item">
+                <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
                 <img
                   src="Group2-main/assets/images/girl 蕾絲薄紗公主裙2.webp"
                   class="d-block w-100"
@@ -45,228 +86,90 @@
                 />
               </div>
             </div>
-            <!-- 箭嘴 Bootstrap 4 data-slide＋ data-target ---------------------------------------------------------->
-            <a
+            <!-- 導航鍵改用button, Bootstrap 5, data-slide＋ data-target ---------------------------------------------------------->
+            <button
               class="carousel-control-prev"
-              href="#productCarousel"
-              role="button"
-              data-slide="prev"
+              type="button"
+              data-bs-target="#productCarousel"
+              data-bs-slide="prev"
             >
               <span
                 class="carousel-control-prev-icon"
                 aria-hidden="true"
               ></span>
-              <span class="sr-only">上一張</span>
-            </a>
-            <a
+              <span class="visually-hidden">上一張</span>
+            </button>
+            <button
               class="carousel-control-next"
-              href="#productCarousel"
-              role="button"
-              data-slide="next"
+              type="button"
+              data-bs-target="#productCarousel"
+              data-bs-slide="next"
             >
               <span
                 class="carousel-control-next-icon"
                 aria-hidden="true"
               ></span>
-              <span class="sr-only">下一張</span>
-            </a>
+              <span class="visually-hidden">下一張</span>
+            </button>
           </div>
         </div>
-        <!-- 右邊商品詳情card ---------------------------------------------------------->
+
+        <!-- 右邊商品詳情card -------------------------------------------------------------------------->
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
               <!-- 商品名稱 -->
-              <h2 class="card-title" >蕾絲薄紗公主裙</h2>
-              <!-- 顧客評分星星 ------------------------------------------------------------>
-              <!-- 填滿星 -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-star-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-star-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-star-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-                />
-              </svg>
-              <!-- 半星 -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-star-half"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"
-                />
-              </svg>
-              <!-- 無星 -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-star"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"
-                />
-              </svg>
-              <!-- 顧客評價 ---------------------------------------------------------->
-              <p>
-                （
-                <!-- comment icon -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chat-right-dots"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"
-                  />
-                  <path
-                    d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
-                  />
-                </svg>
-                3 ）
-              </p>
+              <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+              <h2 class="card-title">蕾絲薄紗公主裙</h2>
+              <div class="d-flex align-items-center mb-3">
+                <!-- 顧客評分星星 ------------------------------------------------------------------>
+                <!-- fas: 實心星, fa-star-half-alt: 半實心星, far: 空心星 -->
+                <div class="me-2">
+                  <i class="fas fa-star text-warning"></i>
+                  <i class="fas fa-star text-warning"></i>
+                  <i class="fas fa-star text-warning"></i>
+                  <i class="fas fa-star-half-alt text-warning"></i>
+                  <i class="far fa-star text-warning"></i>
+                </div>
+                <span class="text-muted">(3則評價)</span>
+              </div>
+              <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+              <p class="lead">$348.00</p>
+               <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
               <p>
                 優雅的公主裙，結合蕾絲和薄紗，層次感強，適合小女孩的夢幻穿搭，完美展現童趣與高雅。
               </p>
-              <h3>$348.00</h3>
 
-              <!-- 提示文字 -->
-              <p>請選擇尺碼：</p>
-              <!-- 尺碼選擇，Bootstrap 4 btn-group＋data-toggle="buttons" ---------------------------------------------------------->
-              <div class="mb-3">
-                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-outline-purple">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size-110"
-                      value="110"
-                      autocomplete="off"
-                    />
-                    110
-                  </label>
-                  <label class="btn btn-outline-purple">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size-120"
-                      value="120"
-                      autocomplete="off"
-                    />
-                    120
-                  </label>
-                  <label class="btn btn-outline-purple">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size-130"
-                      value="130"
-                      autocomplete="off"
-                    />
+              <!-- 尺碼選擇，Bootstrap 5 btn-group＋data-toggle="buttons" ---------------------->
+              <div class="mb-4">
+                <p class="fw-bold">請選擇尺碼：</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-outline-primary size-btn">110</button>
+                  <button class="btn btn-outline-primary size-btn">120</button>
+                  <button class="btn btn-outline-primary size-btn active">
                     130
-                  </label>
-                  <label class="btn btn-outline-purple">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size-140"
-                      value="140"
-                      autocomplete="off"
-                    />
-                    140
-                  </label>
-                  <label class="btn btn-outline-purple">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size-150"
-                      value="150"
-                      autocomplete="off"
-                    />
-                    150
-                  </label>
-                  <label class="btn btn-outline-purple">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size-160"
-                      value="160"
-                      autocomplete="off"
-                    />
-                    160
-                  </label>
+                  </button>
+                  <button class="btn btn-outline-primary size-btn">140</button>
+                  <button class="btn btn-outline-primary size-btn">150</button>
+                  <button class="btn btn-outline-primary size-btn">160</button>
                 </div>
               </div>
-              <!-- 加入購物車按鈕 ---------------------------------------------------------->
-              <button id="addToCartBtn" class="btn btn-success">
-                <!-- cart icons -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-cart4"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"
-                  />
-                </svg>
-                加入購物車
-              </button>
-              <br>
-              <br>
 
-              <!-- 詳細資料、布料成份、評價 ---------------------------------------------------------->
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <!-- 加入購物車按鈕 -------------------------------------------------------------------------------------------------->
+              <button id="addToCartBtn" class="btn btn-primary w-100 py-3">
+                <i class="fas fa-shopping-cart me-2"></i>加入購物車
+              </button>
+
+              <!-- 詳細資料、布料成份、評價 ----------------------------------------------------------------------------------------------->
+              <ul class="nav nav-tabs mt-4" id="productTab" role="tablist">
                 <li class="nav-item" role="presentation">
                   <button
                     class="nav-link active"
-                    id="home-tab"
-                    data-toggle="tab"
-                    data-target="#home"
+                    id="desc-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#desc"
                     type="button"
                     role="tab"
-                    aria-controls="home"
-                    aria-selected="true"
                   >
                     商品描述
                   </button>
@@ -274,13 +177,11 @@
                 <li class="nav-item" role="presentation">
                   <button
                     class="nav-link"
-                    id="profile-tab"
-                    data-toggle="tab"
-                    data-target="#profile"
+                    id="material-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#material"
                     type="button"
                     role="tab"
-                    aria-controls="profile"
-                    aria-selected="false"
                   >
                     商品物料
                   </button>
@@ -288,59 +189,96 @@
                 <li class="nav-item" role="presentation">
                   <button
                     class="nav-link"
-                    id="contact-tab"
-                    data-toggle="tab"
-                    data-target="#contact"
+                    id="reviews-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#reviews"
                     type="button"
                     role="tab"
-                    aria-controls="contact"
-                    aria-selected="false"
                   >
                     顧客評價(3)
                   </button>
                 </li>
               </ul>
-              <div class="tab-content" id="myTabContent">
+
+              <!-- 商品描述 ----------------------------------------------------------------------------------------------->
+              <div
+                class="tab-content p-3 border border-top-0"
+                id="productTabContent"
+              >
                 <div
                   class="tab-pane fade show active"
-                  id="home"
+                  id="desc"
                   role="tabpanel"
-                  aria-labelledby="home-tab"
                 >
-                <!-- 商品描述 ---------------------------------------------------------->
-                 <br>
-                 優雅的公主裙，結合蕾絲和薄紗，層次感強，適合小女孩的夢幻穿搭，完美展現童趣與高雅。
+                <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+                  優雅的公主裙，結合蕾絲和薄紗，層次感強，適合小女孩的夢幻穿搭，完美展現童趣與高雅。精心設計的剪裁，讓小女孩在各種場合都能成為焦點。
                 </div>
-                <div
-                  class="tab-pane fade"
-                  id="profile"
-                  role="tabpanel"
-                  aria-labelledby="profile-tab"
-                >
+
                 <!-- 商品物料 -->
-                 <br>
-                 上身：100% 棉<br>裙擺：100% 聚酯薄紗。棉提供舒適透氣感，聚酯薄紗增添輕盈層次。
-                <hr>
-                機洗冷水，溫和循環，不漂白，低溫烘乾，溫熱熨燙。避免過度拉扯薄紗部分以保持形狀。
-                <hr>
-                產地：美國
+                <div class="tab-pane fade" id="material" role="tabpanel">
+                  <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+                  上身：100% 棉<br />
+                  裙擺：100% 聚酯薄紗<br />
+                  棉提供舒適透氣感，聚酯薄紗增添輕盈層次。<br /><br />
+                  機洗冷水，溫和循環，不漂白，低溫烘乾，溫熱熨燙。避免過度拉扯薄紗部分以保持形狀。<br /><br />
+                  產地：美國
                 </div>
-                <div
-                  class="tab-pane fade"
-                  id="contact"
-                  role="tabpanel"
-                  aria-labelledby="contact-tab"
-                >
-                <!-- 顧客評價 ---------------------------------------------------------->
-                  <br>
-                    <p>「精緻的蕾絲與柔軟的薄紗，讓孩子瞬間變身小公主，超有夢幻感！」</p>
-                    <hr>
-                    <p>「裙擺層次豐富，適合特別場合穿搭，質感超乎預期。」</p>
-                    <hr>
-                    <p>「穿上這件公主裙，女兒開心到不肯脫下，真的太美了！」</p>
+                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                  <!-- 顧客評價 ---------------------------------------------------------->
+                  <div class="review">
+                    <div class="d-flex justify-content-between">
+                      <strong>張小姐</strong>
+                      <div>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                      </div>
+                    </div>
+
+                    <p class="mb-0">
+                      <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+                      「精緻的蕾絲與柔軟的薄紗，讓孩子瞬間變身小公主，超有夢幻感！」
+                    </p>
+                    <small class="text-muted">2023-05-15</small>
                   </div>
+                  <hr />
+                  <div class="review">
+                    <div class="d-flex justify-content-between">
+                      <strong>王媽媽</strong>
+                      <div>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="far fa-star text-warning"></i>
+                      </div>
+                    </div>
+                    <p class="mb-0">
+                      <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+                      「裙擺層次豐富，適合特別場合穿搭，質感超乎預期。」
+                    </p>
+                    <small class="text-muted">2023-04-22</small>
                   </div>
-                </div>
+                  <hr />
+                  <div class="review">
+                    <div class="d-flex justify-content-between">
+                      <strong>李太太</strong>
+                      <div>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star-half-alt text-warning"></i>
+                      </div>
+                    </div>
+                    <p class="mb-0">
+                      <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+                      「穿上這件公主裙，女兒開心到不肯脫下，真的太美了！」
+                    </p>
+                    <small class="text-muted">2023-03-10</small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -349,162 +287,574 @@
       </div>
     </div>
 
-    <!-- 熱賣商品 cards+carosell -->
-     <!-- title + emoji -->
-    <h4 style="text-align: center;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-            <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"/>
-          </svg>
-          熱賣商品
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-            <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"/>
-          </svg>
+    <!-- 熱賣商品card  ----------------------------------------------------------------------------------------------->
+    <h4 style="text-align: center">
+      <i class="fa-solid fa-fire"></i>
+      熱賣商品
+      <i class="fa-solid fa-fire"></i>
     </h4>
-
-    <!-- carousel ＋ card test  ---------------------------------------------------------->
-    <div id="myCarousel" class="carousel slide">
-        <div class="carousel-inner">
-          <!-- 第一頁：4張卡片 -->
-           <!-- 熱賣商品1 ---------------------------------------------------------->
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/girl 夢幻水彩花裙1.webp" class="card-img-top" alt="Product 1">
-                  </div>
-                  <div class="card-body">
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="productpage2.html">夢幻水彩花裙</a></h5>
-                    <p class="card-text">$383.00</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 熱賣商品2 ---------------------------------------------------------->
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/girl 蝴蝶結連衣裙1.webp" class="card-img-top" alt="Product 2">
-                  </div>
-                  <div class="card-body">
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="productpage2.html">蝴蝶結連衣裙</a></h5>
-                    <p class="card-text">$393.00</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 熱賣商品3 ---------------------------------------------------------->
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/girl 卡皮巴拉摘蘋果T恤1.webp" class="card-img-top" alt="Product 3">
-                  </div>
-                  <div class="card-body">
-                    
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="product3.html">卡皮巴拉摘蘋果T恤</a></h5>
-                    <p class="card-text">$263.00</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 熱賣商品4 ---------------------------------------------------------->
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/girl 藍白拼色韓服1.webp" class="card-img-top" alt="Product 4">
-                  </div>
-                  <div class="card-body">
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="product4.html">藍白拼色韓服</a></h5>
-                    <p class="card-text">$398.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 第二頁：4張卡片 -->
-          <div class="carousel-item">
-            <div class="row">
-              <!-- 熱賣商品5 ---------------------------------------------------------->
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/boy 動物方城市運動衫1.webp" class="card-img-top" alt="Product 5">
-                  </div>
-                  <div class="card-body">
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="product5.html">動物方城市運動衫</a></h5>
-                    <p class="card-text">$368.00</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 熱賣商品6 ---------------------------------------------------------->
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/boy 拼色運動衣1.webp" class="card-img-top" alt="Product 6">
-                  </div>
-                  <div class="card-body">
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="product6.html">拼色運動衣</a></h5>
-                    <p class="card-text">$393.00</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 熱賣商品7 ---------------------------------------------------------->
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/boy 刺繡亞麻褲1.webp" class="card-img-top" alt="Product 7">
-                  </div>
-                  <div class="card-body">
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="product7.html">刺繡亞麻褲</a></h5>
-                    <p class="card-text">$263.00</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 熱賣商品8 ---------------------------------------------------------->
-              <div class="col-12 col-md-3">
-                <div class="card">
-                  <div class="square-image">
-                    <img src="Group2-main/assets/images/girl 純綿白色運動褲1.webp" class="card-img-top" alt="Product 8">
-                  </div>
-                  <div class="card-body">
-                    <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-                    <h5 class="card-title"><a href="product8.html">純綿白色運動褲</a></h5>
-                    <p class="card-text">$248.00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="hotsell">
+      <div class="hotsellcard">
+        <img
+          src="Group2-main/assets/images/girl 夢幻水彩花裙1.webp"
+          class="hotsellcard-img-top"
+          alt="夢幻水彩花裙"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+            <a href="product-details-page1.html">夢幻水彩花裙</a>
+          </h5>
+          <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+          <p class="card-text">$383.00</p>
         </div>
-        <!-- 導航箭頭 -->
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">上一頁</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">下一頁</span>
-        </a>
       </div>
 
-    <!-- jQuery from CDN -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Bootstrap 4.6 JavaScript from CDN 加載（Popper.js） -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-      crossorigin="anonymous"
-    ></script>
-    <!-- 自定義 JavaScript 文件 -->
-     <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
-    <script src="product-details-page.js"></script>
+      <div class="hotsell" style="width: 18rem">
+        <img
+          src="Group2-main/assets/images/girl 藍白拼色韓服1.webp"
+          class="hotsellcard-img-top"
+          alt="夢幻水彩花裙"
+        />
+        <div class="hotsellcard">
+          <h5 class="card-title">
+            <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+            <a href="productpage7.html">藍白拼色韓服</a>
+          </h5>
+          <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+          <p class="card-text">$398.00</p>
+        </div>
+      </div>
+
+      <div class="hotsell" style="width: 18rem">
+        <img
+          src="Group2-main/assets/images/girl 蝴蝶結連衣裙1.webp"
+          class="hotsellcard-img-top"
+          alt="夢幻水彩花裙"
+        />
+        <div class="hotsellcard">
+          <h5 class="card-title">
+            <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+            <a href="product-details-page12.html">蝴蝶結連衣裙</a>
+          </h5>
+          <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+          <p class="card-text">$393.00</p>
+        </div>
+      </div>
+
+      <div class="hotsell" style="width: 18rem">
+        <img
+          src="Group2-main/assets/images/girl 卡皮巴拉摘蘋果T恤1.webp"
+          class="hotsellcard-img-top"
+          alt="夢幻水彩花裙"
+        />
+        <div class="hotsellcard">
+          <h5 class="card-title">
+            <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+            <a href="product-details-page2.html">卡皮巴拉摘蘋果T恤</a>
+          </h5>
+          <!-- ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ -->
+          <p class="card-text">$263.00</p>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------------------ 購物車面板 ---------------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">您的購物車</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>商品</th>
+                  <th>價格</th>
+                  <th>數量</th>
+                  <th>小計</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="cartItems">
+                <!-- 購物車項目會動態添加在這裡 -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3" class="text-end fw-bold">總計:</td>
+                  <td id="cartTotal" class="fw-bold">HK$ 0</td>
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              繼續購物
+            </button>
+            <button type="button" class="btn btn-primary" id="checkoutBtn">
+              前往結帳
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 結賬面板 -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- 結賬資訊 -->
+            <h5 class="modal-title">結帳資訊</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="checkoutForm">
+              <div class="mb-3">
+                <label class="form-label">姓名</label>
+                <input type="text" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">電話</label>
+                <input type="tel" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">地址</label>
+                <input type="text" class="form-control" required />
+              </div>
+
+              <!-- 付款方式 -->
+              <div class="mb-3">
+                <label class="form-label">付款方式</label>
+                <select class="form-select" required>
+                  <option value="">選擇付款方式</option>
+                  <option value="credit">信用卡</option>
+                  <option value="atm">銀行轉帳</option>
+                  <option value="cod">貨到付款</option>
+                </select>
+              </div>
+            </form>
+
+            <!-- 請單摘要 -->
+            <div class="alert alert-info mt-3">
+              <h6>訂單摘要</h6>
+              <div id="orderSummary"></div>
+              <hr />
+              <p class="fw-bold">總計: <span id="orderTotal">HK$ 0</span></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- 返回或確認 -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              返回
+            </button>
+            <button type="button" class="btn btn-success" id="confirmOrderBtn">
+              確認訂單
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 確認訂單面板 -->
+    <div class="modal fade" id="orderConfirmModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title">訂單確認</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <i class="fas fa-check-circle text-success fa-3x mb-3"></i>
+            <h4 class="mt-3">感謝您的訂購！</h4>
+            <p>您的訂單已成功提交，我們將盡快處理。</p>
+            <div id="orderDetails" class="text-start mt-4"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              完成
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--  購物車 JavaScript-----------------------------------------------------------------------------  -->
+    <script>
+      // 購物車按鈕
+      localStorage.removeItem("cart");
+      let cart = [];
+
+      $(document).ready(function () {
+        // 購物車數據
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // 更新購物車物品數量顥示
+        function updateCartCount() {
+          const count = cart.reduce((total, item) => total + item.quantity, 0);
+          $("#cartCount").text(count);
+        }
+
+        // 加入購物車按鈕點擊事件
+        $("#addToCartBtn").click(function () {
+          const selectedSize = $(".size-btn.active").text();
+
+          if (!selectedSize) {
+            alert("請選擇尺碼");
+            return;
+          }
+
+          const product = {
+            id: "princess-dress",
+            // ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️ 
+            name: "蕾絲薄紗公主裙",
+            price: 348.0,
+            size: selectedSize,
+            // ‼️‼️‼️🌟👇🏻👇🏻留意path/href👇🏻👇🏻🌟‼️‼️‼️
+            image: "Group2-main/assets/images/girl 蕾絲薄紗公主裙1.webp",
+            quantity: 1,
+          };
+
+          const existingItem = cart.find(
+            (item) => item.id === product.id && item.size === product.size
+          );
+
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+
+          // 顯示成功訊息
+          const successMsg = $(
+            '<div class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3">商品已加入購物車！</div>'
+          );
+          $("body").append(successMsg);
+          setTimeout(() => successMsg.remove(), 2000);
+        });
+
+        // 熱賣商品加入購物車
+        $(".add-to-cart").click(function () {
+          const id = $(this).data("id");
+          const name = $(this).data("name");
+          const price = $(this).data("price");
+
+          const product = {
+            id: id,
+            name: name,
+            price: price,
+            size: "130",
+            image: `https://via.placeholder.com/100x100?text=${name}`,
+            quantity: 1,
+          };
+
+          const existingItem = cart.find(
+            (item) => item.id === product.id && item.size === product.size
+          );
+
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+
+          // 顯示成功訊息
+          const successMsg = $(
+            '<div class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3">商品已加入購物車！</div>'
+          );
+          $("body").append(successMsg);
+          setTimeout(() => successMsg.remove(), 2000);
+        });
+
+        // 尺碼選擇
+        $(".size-btn").click(function () {
+          $(".size-btn").removeClass("active");
+          $(this).addClass("active");
+        });
+
+        // 打開購物車時更新內容
+        $("#cartModal").on("show.bs.modal", function () {
+          updateCartModal();
+        });
+
+        // 更新購物車模態框內容
+        function updateCartModal() {
+          const cartItemsEl = $("#cartItems");
+          cartItemsEl.empty();
+
+          if (cart.length === 0) {
+            cartItemsEl.html(
+              '<tr><td colspan="5" class="text-center">購物車是空的</td></tr>'
+            );
+            $("#cartTotal").text("HK$ 0");
+            return;
+          }
+
+          cart.forEach((item) => {
+            const row = `
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img src="${item.image}" alt="${
+              item.name
+            }" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
+                        <div>
+                            ${item.name}<br>
+                            <small>尺碼: ${item.size}</small>
+                        </div>
+                    </div>
+                </td>
+                <td>HK$ ${item.price}</td>
+                <td>
+                    <div class="input-group" style="width: 120px;">
+                        <button class="btn btn-outline-secondary decrease-quantity" type="button" data-id="${
+                          item.id
+                        }" data-size="${item.size}">-</button>
+                        <input type="text" class="form-control text-center quantity-input" value="${
+                          item.quantity
+                        }" data-id="${item.id}" data-size="${item.size}">
+                        <button class="btn btn-outline-secondary increase-quantity" type="button" data-id="${
+                          item.id
+                        }" data-size="${item.size}">+</button>
+                    </div>
+                </td>
+                <td>HK$ ${(item.price * item.quantity).toFixed(2)}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm remove-item" data-id="${
+                      item.id
+                    }" data-size="${item.size}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            `;
+            cartItemsEl.append(row);
+          });
+
+          const total = cart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+          $("#cartTotal").text(`HK$ ${total.toFixed(2)}`);
+        }
+
+        // 減少商品數量
+        $(document).on("click", ".decrease-quantity", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const itemIndex = cart.findIndex(
+            (item) => item.id === id && item.size === size
+          );
+
+          if (itemIndex !== -1) {
+            if (cart[itemIndex].quantity > 1) {
+              cart[itemIndex].quantity -= 1;
+            } else {
+              cart.splice(itemIndex, 1);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            updateCartModal();
+          }
+        });
+
+        // 增加商品數量
+        $(document).on("click", ".increase-quantity", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const itemIndex = cart.findIndex(
+            (item) => item.id === id && item.size === size
+          );
+
+          if (itemIndex !== -1) {
+            cart[itemIndex].quantity += 1;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            updateCartModal();
+          }
+        });
+
+        // 手動修改數量
+        $(document).on("change", ".quantity-input", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          const newQuantity = parseInt($(this).val()) || 1;
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const itemIndex = cart.findIndex(
+            (item) => item.id === id && item.size === size
+          );
+
+          if (itemIndex !== -1) {
+            if (newQuantity > 0) {
+              cart[itemIndex].quantity = newQuantity;
+            } else {
+              cart.splice(itemIndex, 1);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            updateCartModal();
+          }
+        });
+
+        // 刪除商品
+        $(document).on("click", ".remove-item", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart = cart.filter((item) => !(item.id === id && item.size === size));
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+          updateCartModal();
+        });
+
+        // 結賬按鈕點擊
+        $("#checkoutBtn").click(function () {
+          if (cart.length === 0) {
+            alert("購物車是空的");
+            return;
+          }
+          updateOrderSummary();
+          $("#cartModal").modal("hide");
+          $("#checkoutModal").modal("show");
+        });
+
+        // 更新訂單摘要
+        function updateOrderSummary() {
+          const orderSummaryEl = $("#orderSummary");
+          orderSummaryEl.empty();
+
+          cart.forEach((item) => {
+            const itemEl = `
+            <div class="d-flex justify-content-between">
+                <span>${item.name} (尺碼: ${item.size}) x ${
+              item.quantity
+            }</span>
+                <span>HK$ ${(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+            `;
+            orderSummaryEl.append(itemEl);
+          });
+
+          const total = cart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+          $("#orderTotal").text(`HK$ ${total.toFixed(2)}`);
+        }
+
+        // 確認訂單按鈕鈕
+        $("#confirmOrderBtn").click(function () {
+          const form = $("#checkoutForm")[0];
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          // 創建訂單
+          const order = {
+            number: "ORD" + Date.now(),
+            items: [...cart],
+            total: cart.reduce(
+              (sum, item) => sum + item.price * item.quantity,
+              0
+            ),
+            customer: {
+              name: $("#checkoutForm input").eq(0).val(),
+              phone: $("#checkoutForm input").eq(1).val(),
+              address: $("#checkoutForm input").eq(2).val(),
+              payment: $("#checkoutForm select").val(),
+            },
+          };
+
+          // 顯示確認信息
+          showOrderConfirmation(order);
+
+          // 清空購物車
+          cart = [];
+          localStorage.removeItem("cart");
+          updateCartCount();
+
+          // 關閉模態框
+          $("#checkoutModal").modal("hide");
+        });
+
+        // 顯示付款方式
+        function showOrderConfirmation(order) {
+          const paymentMethods = {
+            credit: "信用卡",
+            atm: "銀行轉帳",
+            cod: "貨到付款",
+          };
+
+          const orderDetails = `
+        <p><strong>訂單編號:</strong> ${order.number}</p>
+        <p><strong>客戶姓名:</strong> ${order.customer.name}</p>
+        <p><strong>聯絡電話:</strong> ${order.customer.phone}</p>
+        <p><strong>送貨地址:</strong> ${order.customer.address}</p>
+        <p><strong>付款方式:</strong> ${
+          paymentMethods[order.customer.payment] || "未知"
+        }</p>
+        <hr>
+        <h6>訂單項目:</h6>
+        <ul class="mb-0">
+            ${order.items
+              .map(
+                (item) =>
+                  `<li>${item.name} (尺碼: ${item.size}) x ${
+                    item.quantity
+                  } - HK$ ${(item.price * item.quantity).toFixed(2)}</li>`
+              )
+              .join("")}
+        </ul>
+        <p class="fw-bold mt-2">總計: HK$ ${order.total.toFixed(2)}</p>
+        `;
+
+          $("#orderDetails").html(orderDetails);
+          $("#orderConfirmModal").modal("show");
+        }
+
+        // 初始化購物車
+        updateCartCount();
+      });
+    </script>
   </body>
 </html>
