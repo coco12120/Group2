@@ -4,18 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <!-- Font Awesome -->
+     <link
+     rel="icon"
+     type="image/x-icon"
+     href="Group2-main/assets/images/logo.png"
+   />
+   <!-- Bootstrap 5 CSS -->
+   <link
+     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+     rel="stylesheet"
+   />
+   <!-- Font Awesome -->
+   <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+   />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 40vh;
-            margin: 0;
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f3f3;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    
+    .header {
+            background-color: #ff85a2;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
         }
+        .footer {
+            background-color: rgba(236, 248, 251, 1);
+            color: rgb(0, 0, 0);
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+        .filter-btn.active {
+            background-color: #1a202c;
+            color: white;
+        }
+
+       
         .forgot-password {
-            background-color: white;
+            
+            
+            margin: auto;
+            margin-top: 100px;
+            background-color:  rgba(236, 248, 251, 1);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -30,31 +74,83 @@
             text-align: left;
             width: 350px;
         }
+        .label{font-size: 20px;}
         .email{
             margin:5px;
             width: 300px;
         }
-        .submit{
+        .submit{background-color:#ff6f96;
+            color: white;
             margin:5px;
+            padding:5px 100px;
+            border-radius: 8px;
         }
-        .submit:hover{color: white;background-color: #333;}
+        .submit:hover{color: white;background-color:rgba(103, 167, 183, 1);}
         </style>
 </head>
 <body>
+   <!-- Header -->
+   <body  class="zen-kaku-gothic-new-regular">
+    <!-- 頂部導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">KidTrendz</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">首頁</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">女裝</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">男裝</a>
+              </li>
+            </ul>
+            <!-- 購物車按鈕 -->
+            <button
+              class="btn btn-outline-primary position-relative"
+              data-bs-toggle="modal"
+              data-bs-target="#cartModal"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartCount" class="badge bg-danger badge-notification"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </nav>
+  </header>
     <div class="forgot-password">
     <h2>忘記密碼</h2><br>
-    <button class="input-em">
-        <label for="email">請輸入已登記的電郵地址</label><br>
+    <button >
+        <label  for="email">請輸入已登記的電郵地址</label><br>
         <input type="email" id="email" class="email" placeholder="e.g.abc@aaa.com"><br>
-        <div id="emailError" class="error"></div>
-        <input type="submit" id="submit" class="submit" value="確定">
+        
+        <input type="submit" id="submit" class="submit" value="確定" >
     </button>
 </div>
 <script>
-    let btn=document.getElementById('submit');
-        btn.addEventListener('click',function() {
-            alert("密碼已傳至你登記的電郵地址")
-        });
+  let btn=document.getElementById('submit');
+      btn.addEventListener('click',function() {
+          alert("密碼已傳至你登記的電郵地址");
+          window.location.href="index.html";
+      });
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+  crossorigin="anonymous"></script>
 </body>
 </html>
