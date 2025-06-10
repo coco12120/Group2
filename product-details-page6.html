@@ -26,7 +26,7 @@
     <!-- 頂部導航欄 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">Designer Kids Clothing</a>
+        <a class="navbar-brand" href="#">KidTrendz</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,13 +38,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">首頁</a>
+              <a class="nav-link" href="./index.html">首頁</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">女裝</a>
+              <a class="nav-link" href="./girls.html">女裝</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">男裝</a>
+              <a class="nav-link" href="./boys.html">男裝</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./AboutUs.html">關於我們</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login.html">登錄</a>
             </li>
           </ul>
           <!-- 購物車按鈕 -->
@@ -296,13 +302,13 @@
         </div>
       </div>
 
-      <div class="hotsell" style="width: 18rem">
+      <div class="hotsellcard" style="width: 18rem">
         <img
           src="Group2-main/assets/images/boy 動物方城市運動衫1.webp"
           class="hotsellcard-img-top"
           alt="動物方城市運動衫"
         />
-        <div class="hotsellcard">
+        <div class="card-body">
           <h5 class="card-title">
             <a href="product-details-page9.html">動物方城市運動衫</a>
           </h5>
@@ -310,13 +316,13 @@
         </div>
       </div>
 
-      <div class="hotsell" style="width: 18rem">
+      <div class="hotsellcard" style="width: 18rem">
         <img
           src="Group2-main/assets/images/boy 文字印花米色休閒褲1.webp"
           class="hotsellcard-img-top"
           alt="文字印花米色休閒褲"
         />
-        <div class="hotsellcard">
+        <div class="card-body">
           <h5 class="card-title">
             <a href="product-details-page3.html">文字印花米色休閒褲</a>
           </h5>
@@ -324,13 +330,13 @@
         </div>
       </div>
 
-      <div class="hotsell" style="width: 18rem">
+      <div class="hotsellcard" style="width: 18rem">
         <img
           src="Group2-main/assets/images/boy 可愛消防車T恤1.webp"
           class="hotsellcard-img-top"
           alt="可愛消防車T恤"
         />
-        <div class="hotsellcard">
+        <div class="card-body">
           <h5 class="card-title">
             <a href="product-details-page4.html">可愛消防車T恤</a>
           </h5>
@@ -339,6 +345,12 @@
       </div>
     </div>
 
+    <footer class="footer text-center">
+      <div class="container mx-auto px-4">
+        <p>&copy; 2025 Designer Kids Clothing. All rights reserved.</p>
+        <p>Free delivery in Hong Kong on all orders for a limited time.</p>
+      </div>
+    </footer>
     <!------------------------------------------ 購物車面板 ---------------------------------------------------------------------------------------------------------------------->
     <div class="modal fade" id="cartModal" tabindex="-1">
       <div class="modal-dialog modal-lg">
@@ -493,7 +505,7 @@
     <!--  購物車 JavaScript-----------------------------------------------------------------------------  -->
     <script>
       // 購物車按鈕
-      localStorage.removeItem("cart");
+      // localStorage.removeItem("cart");
       let cart = [];
 
       $(document).ready(function () {
