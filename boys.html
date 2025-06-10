@@ -50,9 +50,9 @@
             margin-bottom: 30px;
         }
         .footer {
-            background-color: #ff85a2;
-            color: white;
-            padding: 20px 0;
+            background-color: rgba(236, 248, 251, 1);
+            color: rgb(0, 0, 0);
+            padding: 10px 0;
             margin-top: 50px;
         }
         .filter-btn.active {
@@ -60,62 +60,85 @@
             color: white;
         }
     </style>
+
+    <!-- Font Awesome -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="Group2-main/assets/images/logo.png"
+    />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="product-details-page.css" />
 </head>
-<body>
-    <!-- Header -->
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 class="text-2xl font-bold">Designer Kids Clothing</h1>
-          <nav>
-            <ul class="flex space-x-4" style="align-items: center">
-              <li><a href="#" class="text-gray-700 hover:text-black">Home</a></li>
-              <li><a href="./boys.html" class="text-gray-700 hover:text-black">Boys</a></li>
-              <li><a href="./girls.html" class="text-gray-700 hover:text-black">Girls</a></li>
-              <li><a href="#" class="text-gray-700 hover:text-black">Login</a></li>
-              <div class="cart-icon">
-                <button class="btn btn-primary position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cartCount" class="badge bg-danger badge-notification">0</span>
-                </button>
-            </div>
+
+<body  class="zen-kaku-gothic-new-regular">
+    <!-- 頂部導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">Designer Kids Clothing</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">首頁</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">女裝</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">男裝</a>
+              </li>
             </ul>
-          </nav>
+            <!-- 購物車按鈕 -->
+            <button
+              class="btn btn-outline-primary position-relative"
+              data-bs-toggle="modal"
+              data-bs-target="#cartModal"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartCount" class="badge bg-danger badge-notification"
+                >0</span
+              >
+            </button>
+          </div>
         </div>
-      </header>
+      </nav>
 
-    <!-- Shopping Cart Icon -->
-    <!-- <div class="cart-icon">
-        <button class="btn btn-primary position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cartCount" class="badge bg-danger badge-notification">0</span>
-        </button>
-    </div> -->
 
-    <!-- Shopping Cart Icon -->
-    <!-- <div class="cart-icon">
-        <button class="btn btn-primary position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
-            Cart &nbsp;<i class="fas fa-shopping-cart"></i>
-            <span id="cartCount" class="badge bg-danger badge-notification">0</span>
-        </button>
-    </div> -->
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-        <h2 class="text-3xl font-semibold mb-4">Boys' New Arrivals</h2>
-        <p class="text-gray-600 mb-4">Free Shipping on orders over HK$1000</p>
+        <h2 class="text-3xl font-semibold mb-4">男童服飾新品</h2>
+        <p class="text-gray-600 mb-4">購滿HK$1000全港包郵</p>
 
         <!-- Filter and Sort -->
         <div class="flex justify-between items-center mb-6">
             <div class="flex space-x-2">
-                <button class="filter-btn px-4 py-2 border rounded" data-category="all">All</button>
-                <button class="filter-btn px-4 py-2 border rounded" data-category="shirts">Shirts</button>
-                <button class="filter-btn px-4 py-2 border rounded" data-category="pants">Pants</button>
-                <button class="filter-btn px-4 py-2 border rounded" data-category="hoodies">Hoodies</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="all">所有</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="shirts">上衣</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="pants">裤</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="hoodies">上衣</button>
             </div>
             <select id="sort" class="border rounded px-4 py-2">
-                <option value="new">New Arrivals</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
+                <option value="Select">選擇價格排序</option>
+                <option value="price-low">價格:由低至高</option>
+                <option value="price-high">價格：由高至低</option>
             </select>
         </div>
 
@@ -246,12 +269,12 @@
     <script>
         // Sample product data
         const products = [
-            { id: 1, name: "刺繡亞麻褲", category: "pants", price: 398, image: "../img/boy 刺繡亞麻褲1.webp" },
-            { id: 2, name: "文字印花米色休閒褲", category: "pants", price: 383, image: "../img/boy 文字印花米色休閒褲1.webp"  },
-            { id: 3, name: "可愛消防車T恤", category: "shirts", price: 263, image: "../img/boy 可愛消防車T恤1.webp" },
-            { id: 4, name: "彩色恐龍T恤", category: "shirts", price: 253, image: "../img/boy 彩色恐龍T恤1.webp" },
-            { id: 5, name: "拼色運動衣", category: "hoodies", price: 393, image: "../img/boy 拼色運動衣1.webp" },
-            { id: 6, name: "動物方城市運動衫", category: "hoodies", price: 368, image: "../img/boy 動物方城市運動衫1.webp" },
+            { id: 1, name: "刺繡亞麻褲", category: "pants", price: 398, image: "../img/boy 刺繡亞麻褲1.webp" , link:"product-details-page5.html"},
+            { id: 2, name: "文字印花米色休閒褲", category: "pants", price: 383, image: "../img/boy 文字印花米色休閒褲1.webp", link:"product-details-page3.html"  },
+            { id: 3, name: "可愛消防車T恤", category: "shirts", price: 263, image: "../img/boy 可愛消防車T恤1.webp", link:"product-details-page4.html" },
+            { id: 4, name: "彩色恐龍T恤", category: "shirts", price: 253, image: "../img/boy 彩色恐龍T恤1.webp", link:"product-details-page6.html" },
+            { id: 5, name: "拼色運動衣", category: "hoodies", price: 393, image: "../img/boy 拼色運動衣1.webp", link:"product-details-page8.html" },
+            { id: 6, name: "動物方城市運動衫", category: "hoodies", price: 368, image: "../img/boy 動物方城市運動衫1.webp", link:"product-details-page9.html" },
             ];
 
         // Shopping cart data
@@ -354,19 +377,15 @@
             productsToRender.forEach(product => {
                 const card = `
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" data-category="${product.category}">
-                        <div class="flex justify-center bg-gray-50 p-4">
-                             <img src="${product.image}" alt="${product.name}" class="w-64 h-64 object-cover">
+                        <div class="flex justify-center bg-gray-50 p-4"> 
+                           <img src="${product.image}" alt="${product.name}" class="w-64 h-64 object-cover">
                         </div>
                         <div class="p-4">
                             <h3 class="text-lg font-semibold">${product.name}</h3>
-                            <p class="text-gray-600">HK$${product.price}</p>
-                            <button class="mt-2 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 add-to-cart" 
-                                    data-id="${product.id}" 
-                                    data-name="${product.name}" 
-                                    data-price="${product.price}" 
-                                    data-img="${product.image}">
-                                Add to Cart
-                            </button>
+                            <p class="text-gray-600">HK$${product.price}</p> 
+                            <a href="${product.link}">
+                                <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400" href="${product.link}"> 更多詳情</button>
+                            </a>
                         </div>
                     </div>
                 `;
