@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>藍白拼色韓服</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="Group2-main/assets/images/logo.png"
+    />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- link to css -->
+    <link rel="stylesheet" href="product-details-page.css" />
+  </head>
+  <body class="zen-kaku-gothic-new-regular">
+    <!-- 頂部導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Designer Kids Clothing</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">女裝</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">男裝</a>
+            </li>
+          </ul>
+          <!-- 購物車按鈕 -->
+          <button
+            class="btn btn-outline-primary position-relative"
+            data-bs-toggle="modal"
+            data-bs-target="#cartModal"
+          >
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartCount" class="badge bg-danger badge-notification"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="container my-4">
+      <div class="row">
+        <!-- Bootstrap productCarousel，刪data-ride 唔俾自動轉相 -->
+        <div class="col-md-6">
+          <div id="productCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="Group2-main/assets/images/girl 藍白拼色韓服1.webp"
+                  class="d-block w-100"
+                  alt="藍白拼色韓服"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="Group2-main/assets/images/girl 藍白拼色韓服2.webp"
+                  class="d-block w-100"
+                  alt="藍白拼色韓服"
+                />
+              </div>
+            </div>
+            <!-- 導航鍵改用button, Bootstrap 5, data-slide＋ data-target ---------------------------------------------------------->
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#productCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">上一張</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#productCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">下一張</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 右邊商品詳情card -------------------------------------------------------------------------->
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <!-- 商品名稱 -->
+              <h2 class="card-title">藍白拼色韓服</h2>
+              <div class="d-flex align-items-center mb-3">
+                <!-- 顧客評分星星 ------------------------------------------------------------------>
+                <!-- fas: 實心星, fa-star-half-alt: 半實心星, far: 空心星 -->
+                <div class="me-2">
+                  <i class="fas fa-star text-warning"></i>
+                  <i class="fas fa-star text-warning"></i>
+                  <i class="fas fa-star text-warning"></i>
+                  <i class="fas fa-star-half-alt text-warning"></i>
+                  <i class="far fa-star text-warning"></i>
+                </div>
+                <span class="text-muted">(3則評價)</span>
+              </div>
+              <p class="lead">$398.00</p>
+              <p>
+                傳統韓服，藍白拼色，純棉材質，展現濃厚文化風情，適合節慶穿著。
+              </p>
+
+              <!-- 尺碼選擇，Bootstrap 5 btn-group＋data-toggle="buttons" ---------------------->
+              <div class="mb-4">
+                <p class="fw-bold">請選擇尺碼：</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-outline-primary size-btn">110</button>
+                  <button class="btn btn-outline-primary size-btn">120</button>
+                  <button class="btn btn-outline-primary size-btn active">
+                    130
+                  </button>
+                  <button class="btn btn-outline-primary size-btn">140</button>
+                  <button class="btn btn-outline-primary size-btn">150</button>
+                  <button class="btn btn-outline-primary size-btn">160</button>
+                </div>
+              </div>
+
+              <!-- 加入購物車按鈕 -------------------------------------------------------------------------------------------------->
+              <button id="addToCartBtn" class="btn btn-primary w-100 py-3">
+                <i class="fas fa-shopping-cart me-2"></i>加入購物車
+              </button>
+
+              <!-- 詳細資料、布料成份、評價 ----------------------------------------------------------------------------------------------->
+              <ul class="nav nav-tabs mt-4" id="productTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="desc-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#desc"
+                    type="button"
+                    role="tab"
+                  >
+                    商品描述
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="material-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#material"
+                    type="button"
+                    role="tab"
+                  >
+                    商品物料
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="reviews-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#reviews"
+                    type="button"
+                    role="tab"
+                  >
+                    顧客評價(3)
+                  </button>
+                </li>
+              </ul>
+
+              <!-- 商品描述 ----------------------------------------------------------------------------------------------->
+              <div
+                class="tab-content p-3 border border-top-0"
+                id="productTabContent"
+              >
+                <div
+                  class="tab-pane fade show active"
+                  id="desc"
+                  role="tabpanel"
+                >
+                傳統韓服，藍白拼色，純棉材質，展現濃厚文化風情，適合節慶穿著。
+                </div>
+
+                <!-- 商品物料 -->
+                <div class="tab-pane fade" id="material" role="tabpanel">
+                  80% 棉，20%聚酯混紡，柔軟舒適，適合敏感肌。<br />
+                  機洗冷水，溫和循環，低溫烘乾，溫熱熨燙。<br /><br />
+                  產地：美國
+                </div>
+                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                  <!-- 顧客評價 ---------------------------------------------------------->
+                  <div class="review">
+                    <div class="d-flex justify-content-between">
+                      <strong>張小姐</strong>
+                      <div>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                      </div>
+                    </div>
+
+                    <p class="mb-0">
+                      「充滿韓國風情的設計，優雅大方，孩子穿上很有氣質！」
+                    </p>
+                    <small class="text-muted">2023-05-15</small>
+                  </div>
+                  <hr />
+                  <div class="review">
+                    <div class="d-flex justify-content-between">
+                      <strong>王媽媽</strong>
+                      <div>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="far fa-star text-warning"></i>
+                      </div>
+                    </div>
+                    <p class="mb-0">
+                      「⁠材質舒服，剪裁好，適合拍照。」
+                    </p>
+                    <small class="text-muted">2023-04-22</small>
+                  </div>
+                  <hr />
+                  <div class="review">
+                    <div class="d-flex justify-content-between">
+                      <strong>李太太</strong>
+                      <div>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star-half-alt text-warning"></i>
+                      </div>
+                    </div>
+                    <p class="mb-0">
+                      「精緻的藍白拼色，文化感十足，值得收藏的一件童裝。」
+                    </p>
+                    <small class="text-muted">2023-03-10</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 熱賣商品card  ----------------------------------------------------------------------------------------------->
+    <h4 style="text-align: center">
+      <i class="fa-solid fa-fire"></i>
+      熱賣商品
+      <i class="fa-solid fa-fire"></i>
+    </h4>
+    <div class="hotsell">
+      <div class="hotsellcard">
+        <img
+          src="Group2-main/assets/images/girl 夢幻水彩花裙1.webp"
+          class="hotsellcard-img-top"
+          alt="夢幻水彩花裙"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="product-details-page7.html">夢幻水彩花裙</a>
+          </h5>
+          <p class="card-text">$383.00</p>
+        </div>
+      </div>
+
+      <div class="hotsell" style="width: 18rem">
+        <img
+          src="Group2-main/assets/images/girl 蕾絲薄紗公主裙1.webp"
+          class="hotsellcard-img-top"
+          alt="蕾絲薄紗公主裙"
+        />
+        <div class="hotsellcard">
+          <h5 class="card-title">
+            <a href="product-details-page1.html">蕾絲薄紗公主裙</a>
+          </h5>
+          <p class="card-text">$348.00</p>
+        </div>
+      </div>
+
+      <div class="hotsell" style="width: 18rem">
+        <img
+          src="Group2-main/assets/images/girl 蝴蝶結連衣裙1.webp"
+          class="hotsellcard-img-top"
+          alt="蝴蝶結連衣裙"
+        />
+        <div class="hotsellcard">
+          <h5 class="card-title">
+            <a href="product-details-page12.html">蝴蝶結連衣裙</a>
+          </h5>
+          <p class="card-text">$393.00</p>
+        </div>
+      </div>
+
+      <div class="hotsell" style="width: 18rem">
+        <img
+          src="Group2-main/assets/images/girl 卡皮巴拉摘蘋果T恤1.webp"
+          class="hotsellcard-img-top"
+          alt="夢幻水彩花裙"
+        />
+        <div class="hotsellcard">
+          <h5 class="card-title">
+            <a href="product-details-page2.html">卡皮巴拉摘蘋果T恤</a>
+          </h5>
+          <p class="card-text">$263.00</p>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------------------ 購物車面板 ---------------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">您的購物車</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>商品</th>
+                  <th>價格</th>
+                  <th>數量</th>
+                  <th>小計</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="cartItems">
+                <!-- 購物車項目會動態添加在這裡 -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3" class="text-end fw-bold">總計:</td>
+                  <td id="cartTotal" class="fw-bold">HK$ 0</td>
+                  <td></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              繼續購物
+            </button>
+            <button type="button" class="btn btn-primary" id="checkoutBtn">
+              前往結帳
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 結賬面板 -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- 結賬資訊 -->
+            <h5 class="modal-title">結帳資訊</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="checkoutForm">
+              <div class="mb-3">
+                <label class="form-label">姓名</label>
+                <input type="text" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">電話</label>
+                <input type="tel" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">地址</label>
+                <input type="text" class="form-control" required />
+              </div>
+
+              <!-- 付款方式 -->
+              <div class="mb-3">
+                <label class="form-label">付款方式</label>
+                <select class="form-select" required>
+                  <option value="">選擇付款方式</option>
+                  <option value="credit">信用卡</option>
+                  <option value="atm">銀行轉帳</option>
+                  <option value="cod">貨到付款</option>
+                </select>
+              </div>
+            </form>
+
+            <!-- 請單摘要 -->
+            <div class="alert alert-info mt-3">
+              <h6>訂單摘要</h6>
+              <div id="orderSummary"></div>
+              <hr />
+              <p class="fw-bold">總計: <span id="orderTotal">HK$ 0</span></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!-- 返回或確認 -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              返回
+            </button>
+            <button type="button" class="btn btn-success" id="confirmOrderBtn">
+              確認訂單
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 確認訂單面板 -->
+    <div class="modal fade" id="orderConfirmModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title">訂單確認</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <i class="fas fa-check-circle text-success fa-3x mb-3"></i>
+            <h4 class="mt-3">感謝您的訂購！</h4>
+            <p>您的訂單已成功提交，我們將盡快處理。</p>
+            <div id="orderDetails" class="text-start mt-4"></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              完成
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--  購物車 JavaScript-----------------------------------------------------------------------------  -->
+    <script>
+      // 購物車按鈕
+      localStorage.removeItem("cart");
+      let cart = [];
+
+      $(document).ready(function () {
+        // 購物車數據
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // 更新購物車物品數量顥示
+        function updateCartCount() {
+          const count = cart.reduce((total, item) => total + item.quantity, 0);
+          $("#cartCount").text(count);
+        }
+
+        // 加入購物車按鈕點擊事件
+        $("#addToCartBtn").click(function () {
+          const selectedSize = $(".size-btn.active").text();
+
+          if (!selectedSize) {
+            alert("請選擇尺碼");
+            return;
+          }
+
+          const product = {
+            id: "princess-dress",
+            name: "藍白拼色韓服",
+            price: 398.0,
+            size: selectedSize,
+            image: "Group2-main/assets/images/girl 藍白拼色韓服1.webp",
+            quantity: 1,
+          };
+
+          const existingItem = cart.find(
+            (item) => item.id === product.id && item.size === product.size
+          );
+
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+
+          // 顯示成功訊息
+          const successMsg = $(
+            '<div class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3">商品已加入購物車！</div>'
+          );
+          $("body").append(successMsg);
+          setTimeout(() => successMsg.remove(), 2000);
+        });
+
+        // 熱賣商品加入購物車
+        $(".add-to-cart").click(function () {
+          const id = $(this).data("id");
+          const name = $(this).data("name");
+          const price = $(this).data("price");
+
+          const product = {
+            id: id,
+            name: name,
+            price: price,
+            size: "130",
+            image: `https://via.placeholder.com/100x100?text=${name}`,
+            quantity: 1,
+          };
+
+          const existingItem = cart.find(
+            (item) => item.id === product.id && item.size === product.size
+          );
+
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+
+          // 顯示成功訊息
+          const successMsg = $(
+            '<div class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3">商品已加入購物車！</div>'
+          );
+          $("body").append(successMsg);
+          setTimeout(() => successMsg.remove(), 2000);
+        });
+
+        // 尺碼選擇
+        $(".size-btn").click(function () {
+          $(".size-btn").removeClass("active");
+          $(this).addClass("active");
+        });
+
+        // 打開購物車時更新內容
+        $("#cartModal").on("show.bs.modal", function () {
+          updateCartModal();
+        });
+
+        // 更新購物車模態框內容
+        function updateCartModal() {
+          const cartItemsEl = $("#cartItems");
+          cartItemsEl.empty();
+
+          if (cart.length === 0) {
+            cartItemsEl.html(
+              '<tr><td colspan="5" class="text-center">購物車是空的</td></tr>'
+            );
+            $("#cartTotal").text("HK$ 0");
+            return;
+          }
+
+          cart.forEach((item) => {
+            const row = `
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img src="${item.image}" alt="${
+              item.name
+            }" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
+                        <div>
+                            ${item.name}<br>
+                            <small>尺碼: ${item.size}</small>
+                        </div>
+                    </div>
+                </td>
+                <td>HK$ ${item.price}</td>
+                <td>
+                    <div class="input-group" style="width: 120px;">
+                        <button class="btn btn-outline-secondary decrease-quantity" type="button" data-id="${
+                          item.id
+                        }" data-size="${item.size}">-</button>
+                        <input type="text" class="form-control text-center quantity-input" value="${
+                          item.quantity
+                        }" data-id="${item.id}" data-size="${item.size}">
+                        <button class="btn btn-outline-secondary increase-quantity" type="button" data-id="${
+                          item.id
+                        }" data-size="${item.size}">+</button>
+                    </div>
+                </td>
+                <td>HK$ ${(item.price * item.quantity).toFixed(2)}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm remove-item" data-id="${
+                      item.id
+                    }" data-size="${item.size}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            `;
+            cartItemsEl.append(row);
+          });
+
+          const total = cart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+          $("#cartTotal").text(`HK$ ${total.toFixed(2)}`);
+        }
+
+        // 減少商品數量
+        $(document).on("click", ".decrease-quantity", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const itemIndex = cart.findIndex(
+            (item) => item.id === id && item.size == size
+          );
+
+          if (itemIndex !== -1) {
+            if (cart[itemIndex].quantity > 1) {
+              cart[itemIndex].quantity -= 1;
+            } else {
+              cart.splice(itemIndex, 1);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            updateCartModal();
+          }
+        });
+
+        // 增加商品數量
+        $(document).on("click", ".increase-quantity", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const itemIndex = cart.findIndex(
+            (item) => item.id === id && item.size == size
+          );
+
+          if (itemIndex !== -1) {
+            cart[itemIndex].quantity += 1;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            updateCartModal();
+          }
+        });
+
+        // 手動修改數量
+        $(document).on("change", ".quantity-input", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          const newQuantity = parseInt($(this).val()) || 1;
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const itemIndex = cart.findIndex(
+            (item) => item.id === id && item.size == size
+          );
+
+          if (itemIndex !== -1) {
+            if (newQuantity > 0) {
+              cart[itemIndex].quantity = newQuantity;
+            } else {
+              cart.splice(itemIndex, 1);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            updateCartModal();
+          }
+        });
+
+        // 刪除商品
+        $(document).on("click", ".remove-item", function () {
+          const id = $(this).data("id");
+          const size = $(this).data("size");
+          cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart = cart.filter((item) => !(item.id === id && item.size == size));
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+          updateCartModal();
+        });
+
+        // 結賬按鈕點擊
+        $("#checkoutBtn").click(function () {
+          if (cart.length === 0) {
+            alert("購物車是空的");
+            return;
+          }
+          updateOrderSummary();
+          $("#cartModal").modal("hide");
+          $("#checkoutModal").modal("show");
+        });
+
+        // 更新訂單摘要
+        function updateOrderSummary() {
+          const orderSummaryEl = $("#orderSummary");
+          orderSummaryEl.empty();
+
+          cart.forEach((item) => {
+            const itemEl = `
+            <div class="d-flex justify-content-between">
+                <span>${item.name} (尺碼: ${item.size}) x ${
+              item.quantity
+            }</span>
+                <span>HK$ ${(item.price * item.quantity).toFixed(2)}</span>
+            </div>
+            `;
+            orderSummaryEl.append(itemEl);
+          });
+
+          const total = cart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
+          $("#orderTotal").text(`HK$ ${total.toFixed(2)}`);
+        }
+
+        // 確認訂單按鈕鈕
+        $("#confirmOrderBtn").click(function () {
+          const form = $("#checkoutForm")[0];
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          // 創建訂單
+          const order = {
+            number: "ORD" + Date.now(),
+            items: [...cart],
+            total: cart.reduce(
+              (sum, item) => sum + item.price * item.quantity,
+              0
+            ),
+            customer: {
+              name: $("#checkoutForm input").eq(0).val(),
+              phone: $("#checkoutForm input").eq(1).val(),
+              address: $("#checkoutForm input").eq(2).val(),
+              payment: $("#checkoutForm select").val(),
+            },
+          };
+
+          // 顯示確認信息
+          showOrderConfirmation(order);
+
+          // 清空購物車
+          cart = [];
+          localStorage.removeItem("cart");
+          updateCartCount();
+
+          // 關閉模態框
+          $("#checkoutModal").modal("hide");
+        });
+
+        // 顯示付款方式
+        function showOrderConfirmation(order) {
+          const paymentMethods = {
+            credit: "信用卡",
+            atm: "銀行轉帳",
+            cod: "貨到付款",
+          };
+
+          const orderDetails = `
+        <p><strong>訂單編號:</strong> ${order.number}</p>
+        <p><strong>客戶姓名:</strong> ${order.customer.name}</p>
+        <p><strong>聯絡電話:</strong> ${order.customer.phone}</p>
+        <p><strong>送貨地址:</strong> ${order.customer.address}</p>
+        <p><strong>付款方式:</strong> ${
+          paymentMethods[order.customer.payment] || "未知"
+        }</p>
+        <hr>
+        <h6>訂單項目:</h6>
+        <ul class="mb-0">
+            ${order.items
+              .map(
+                (item) =>
+                  `<li>${item.name} (尺碼: ${item.size}) x ${
+                    item.quantity
+                  } - HK$ ${(item.price * item.quantity).toFixed(2)}</li>`
+              )
+              .join("")}
+        </ul>
+        <p class="fw-bold mt-2">總計: HK$ ${order.total.toFixed(2)}</p>
+        `;
+
+          $("#orderDetails").html(orderDetails);
+          $("#orderConfirmModal").modal("show");
+        }
+
+        // 初始化購物車
+        updateCartCount();
+      });
+    </script>
+  </body>
+</html>
