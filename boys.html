@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidTrendz Clothing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f3f3;
+        }
+        .product-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-img {
+            height: 250px;
+            object-fit: cover;
+        }
+       
+        .badge-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        .cart-modal img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+        
+        .footer {
+            background-color: rgba(236, 248, 251, 1);
+            color: rgb(0, 0, 0);
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+        .filter-btn.active {
+            background-color: #1a202c;
+            color: white;
+        }
+    </style>
+
+    <!-- Font Awesome -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="Group2-main/assets/images/logo.png"
+    />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="product-details-page.css" />
+</head>
+
+<body  class="zen-kaku-gothic-new-regular">
+    <!-- 頂部導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">KidTrendz</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">首頁</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./girls.html">女裝</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./boys.html">男裝</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./AboutUs.html">關於我們</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./login.html">登錄</a>
+              </li>
+            </ul>
+            <!-- 購物車按鈕 -->
+            <button
+              class="btn btn-outline-primary position-relative"
+              data-bs-toggle="modal"
+              data-bs-target="#cartModal"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartCount" class="badge bg-danger badge-notification"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </nav>
+
+
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-semibold mb-4">男童服飾新品</h2>
+        <p class="text-gray-600 mb-4">購滿HK$1000全港包郵</p>
+
+        <!-- Filter and Sort -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex space-x-2">
+                <button class="filter-btn px-4 py-2 border rounded" data-category="all">所有</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="shirts">上衣</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="pants">裤</button>
+                <button class="filter-btn px-4 py-2 border rounded" data-category="hoodies">上衣</button>
+            </div>
+            <select id="sort" class="border rounded px-4 py-2">
+                <option value="Select">選擇價格排序</option>
+                <option value="price-low">價格:由低至高</option>
+                <option value="price-high">價格：由高至低</option>
+            </select>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Product cards will be dynamically inserted here -->
+        </div>
+    </main>
+
+<!-- Footer -->
+<footer class="footer text-center">
+    <div class="container mx-auto px-4">
+        <p>&copy; 2025 KidTrendz Clothing. All rights reserved.</p>
+        <p>購滿HK$1000全港包郵</p>
+    </div>
+</footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems">
+                            <!-- Cart items will be dynamically inserted here -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-end fw-bold">Total:</td>
+                                <td id="cartTotal" class="fw-bold">HK$ 0</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" id="checkoutBtn">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="checkoutModalLabel">Checkout Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="checkoutForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="payment" class="form-label">Payment Method</label>
+                            <select class="form-select" id="payment" required>
+                                <option value="">Select Payment Method</option>
+                                <option value="credit">Credit Card</option>
+                                <option value="atm">Bank Transfer</option>
+                                <option value="cod">Cash on Delivery</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="alert alert-info mt-3">
+                        <h6>Order Summary</h6>
+                        <div id="orderSummary"></div>
+                        <hr>
+                        <p class="fw-bold">Total: <span id="orderTotal">HK$ 0</span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                    <button type="button" class="btn btn-success" id="confirmOrderBtn">Confirm Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal fade" id="orderConfirmModal" tabindex="-1" aria-labelledby="orderConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="orderConfirmModalLabel">Order Confirmed</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-check-circle text-success" style="font-size: 50px;"></i>
+                    <h4 class="mt-3">Thank You for Your Order!</h4>
+                    <p>Your order has been successfully submitted and will be processed soon.</p>
+                    <div id="orderDetails" class="text-start mt-3"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, name: "刺繡亞麻褲", category: "pants", price: 398, image: "Group2-main/assets/images/boy 刺繡亞麻褲1.webp" , link:"product-details-page5.html"},
+            { id: 2, name: "文字印花米色休閒褲", category: "pants", price: 383, image: "Group2-main/assets/images/boy 文字印花米色休閒褲1.webp", link:"product-details-page3.html"  },
+            { id: 3, name: "可愛消防車T恤", category: "shirts", price: 263, image: "Group2-main/assets/images/boy 可愛消防車T恤1.webp", link:"product-details-page4.html" },
+            { id: 4, name: "彩色恐龍T恤", category: "shirts", price: 253, image: "Group2-main/assets/images/boy 彩色恐龍T恤1.webp", link:"product-details-page6.html" },
+            { id: 5, name: "拼色運動衣", category: "hoodies", price: 393, image: "Group2-main/assets/images/boy 拼色運動衣1.webp", link:"product-details-page8.html" },
+            { id: 6, name: "動物方城市運動衫", category: "hoodies", price: 368, image: "Group2-main/assets/images/boy 動物方城市運動衫1.webp", link:"product-details-page9.html" },
+            ];
+
+        // Shopping cart data
+        let cart = [];
+        localStorage.removeItem('cart');
+        updateCartCount();
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load cart from local storage
+            if (localStorage.getItem('cart')) {
+                cart = JSON.parse(localStorage.getItem('cart'));
+                updateCartCount();
+            }
+            
+            // Render products
+            renderProducts(products);
+            
+            // Filter functionality
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.getAttribute('data-category');
+                    const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+                    renderProducts(filteredProducts);
+                });
+            });
+            
+            // Sort functionality
+            document.getElementById('sort').addEventListener('change', (e) => {
+                const sortValue = e.target.value;
+                let sortedProducts = [...products];
+                if (sortValue === 'price-low') {
+                    sortedProducts.sort((a, b) => a.price - b.price);
+                } else if (sortValue === 'price-high') {
+                    sortedProducts.sort((a, b) => b.price - a.price);
+                }
+                renderProducts(sortedProducts);
+            });
+            
+            // Open cart modal event
+            document.getElementById('cartModal').addEventListener('show.bs.modal', function() {
+                updateCartModal();
+            });
+            
+            // Checkout button click event
+            document.getElementById('checkoutBtn').addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Your cart is empty. Please add some products first!');
+                    return;
+                }
+                
+                const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+                document.getElementById('cartModal').querySelector('.btn-close').click();
+                
+                // Update order summary
+                updateOrderSummary();
+                
+                checkoutModal.show();
+            });
+            
+            // Confirm order button click event
+            document.getElementById('confirmOrderBtn').addEventListener('click', function() {
+                const form = document.getElementById('checkoutForm');
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                
+                // Collect order information
+                const order = {
+                    customer: {
+                        name: document.getElementById('name').value,
+                        phone: document.getElementById('phone').value,
+                        address: document.getElementById('address').value,
+                        payment: document.getElementById('payment').value
+                    },
+                    items: cart,
+                    total: calculateCartTotal()
+                };
+                
+                // Show order confirmation
+                showOrderConfirmation(order);
+                
+                // Clear cart
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                
+                // Close checkout modal
+                document.getElementById('checkoutModal').querySelector('.btn-close').click();
+            });
+        });
+        
+        // Function to render products
+        function renderProducts(productsToRender) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            productsToRender.forEach(product => {
+                const card = `
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden" data-category="${product.category}">
+                        <div class="flex justify-center bg-gray-50 p-4"> 
+                           <img src="${product.image}" alt="${product.name}" class="w-64 h-64 object-cover">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold">${product.name}</h3>
+                            <p class="text-gray-600">HK$${product.price}</p> 
+                            <a href="${product.link}">
+                                <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400" href="${product.link}"> 更多詳情</button>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+            
+            // Add event listeners to new cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    const img = this.getAttribute('data-img');
+                    
+                    // Check if item already in cart
+                    const existingItem = cart.find(item => item.id === id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id,
+                            name,
+                            price,
+                            img,
+                            quantity: 1
+                        });
+                    }
+                    
+                    // Update local storage
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    // Update cart count
+                    updateCartCount();
+                });
+            });
+        }
+        
+        // Update cart count display
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        // Update cart modal content
+        function updateCartModal() {
+            const cartItemsEl = document.getElementById('cartItems');
+            cartItemsEl.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<tr><td colspan="5" class="text-center">Your cart is empty</td></tr>';
+                document.getElementById('cartTotal').textContent = 'HK$ 0';
+                return;
+            }
+            
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="${item.img}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
+                            ${item.name}
+                        </div>
+                    </td>
+                    <td>HK$ ${item.price}</td>
+                    <td>
+                        <div class="input-group" style="width: 120px;">
+                            <button class="btn btn-outline-secondary decrease-quantity" type="button" data-id="${item.id}">-</button>
+                            <input type="text" class="form-control text-center quantity-input" value="${item.quantity}" data-id="${item.id}">
+                            <button class="btn btn-outline-secondary increase-quantity" type="button" data-id="${item.id}">+</button>
+                        </div>
+                    </td>
+                    <td>HK$ ${(item.price * item.quantity).toFixed(2)}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                cartItemsEl.appendChild(row);
+            });
+            
+            // Update total
+            document.getElementById('cartTotal').textContent = `HK$ ${calculateCartTotal().toFixed(2)}`;
+            
+            // Add quantity adjustment events
+            document.querySelectorAll('.decrease-quantity').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        cart = cart.filter(item => item.id !== id);
+                    }
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    updateCartModal();
+                });
+            });
+            
+            document.querySelectorAll('.increase-quantity').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    item.quantity += 1;
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    updateCartModal();
+                });
+            });
+            
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const id = this.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    const newQuantity = parseInt(this.value);
+                    
+                    if (newQuantity > 0) {
+                        item.quantity = newQuantity;
+                    } else {
+                        cart = cart.filter(item => item.id !== id);
+                    }
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    updateCartModal();
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    cart = cart.filter(item => item.id !== id);
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    updateCartModal();
+                });
+            });
+        }
+        
+        // Calculate cart total
+        function calculateCartTotal() {
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+        
+        // Update order summary
+        function updateOrderSummary() {
+            const orderSummaryEl = document.getElementById('orderSummary');
+            orderSummaryEl.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'd-flex justify-content-between';
+                itemEl.innerHTML = `
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>HK$ ${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                orderSummaryEl.appendChild(itemEl);
+            });
+            
+            document.getElementById('orderTotal').textContent = `HK$ ${calculateCartTotal().toFixed(2)}`;
+        }
+        
+        // Show order confirmation
+        function showOrderConfirmation(order) {
+            const orderDetailsEl = document.getElementById('orderDetails');
+            orderDetailsEl.innerHTML = `
+                <p><strong>Order Number:</strong> ${Math.floor(Math.random() * 1000000)}</p>
+                <p><strong>Customer Name:</strong> ${order.customer.name}</p>
+                <p><strong>Contact Phone:</strong> ${order.customer.phone}</p>
+                <p><strong>Delivery Address:</strong> ${order.customer.address}</p>
+                <p><strong>Payment Method:</strong> ${getPaymentMethodName(order.customer.payment)}</p>
+                <hr>
+                <h6>Order Items:</h6>
+                <ul>
+                    ${order.items.map(item => `<li>${item.name} x ${item.quantity} - HK$ ${(item.price * item.quantity).toFixed(2)}</li>`).join('')}
+                </ul>
+                <p class="fw-bold">Total: HK$ ${order.total.toFixed(2)}</p>
+            `;
+            
+            const orderConfirmModal = new bootstrap.Modal(document.getElementById('orderConfirmModal'));
+            orderConfirmModal.show();
+        }
+        
+        // Get payment method name
+        function getPaymentMethodName(paymentMethod) {
+            switch (paymentMethod) {
+                case 'credit': return 'Credit Card';
+                case 'atm': return 'Bank Transfer';
+                case 'cod': return 'Cash on Delivery';
+                default: return 'Unknown';
+            }
+        }
+    </script>
+</body>
+</html>
