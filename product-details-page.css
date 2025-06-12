@@ -43,57 +43,24 @@ body{
   pointer-events: none;
 }
 
-/* 定義自定義的紫色輪廓按鈕 */
-.btn-outline-purple {
-  color: #6f42c1;
-  border-color: #6f42c1;
-}
 
-.btn-outline-purple:hover,
-.btn-outline-purple.active {
-  color: #fff;
-  background-color: #6f42c1;
-  border-color: #6f42c1;
-}
 
-.btn-outline-purple:focus,
-.btn-outline-purple.focus {
-  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.5);
-}
 
-.btn-outline-purple.disabled,
-.btn-outline-purple:disabled {
-  color: #6f42c1;
-  background-color: transparent;
-}
 
-.btn-outline-purple:not(:disabled):not(.disabled):active,
-.btn-outline-purple:not(:disabled):not(.disabled).active,
-.show > .btn-outline-purple.dropdown-toggle {
-  color: #fff;
-  background-color: #6f42c1;
-  border-color: #6f42c1;
-}
-
-.btn-outline-purple:not(:disabled):not(.disabled):active:focus,
-.btn-outline-purple:not(:disabled):not(.disabled).active:focus,
-.show > .btn-outline-purple.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.5);
-}
-
-#addToCartBtn {
-  background-color: orange; /* 橙色背景 */
-  color: white; /* 黑色文字 */
+#addToCartBtn,
+.btn-outline-primary{
+  background-color: #f8a1b5;
+  color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
 }
 
-#addToCartBtn:hover {
-  background-color: rgb(255, 236, 214); /* 懸停時變為白色背景 */
-  color: orange; /* 橙色文字 */
-  border: solid orange; /* 添加橙色邊框，使效果更明顯 */
+#addToCartBtn:hover,
+.btn-outline-primary:hover {
+  background-color: #ffedf1; 
+  color: #f8a1b5; 
 }
 
 .card {
