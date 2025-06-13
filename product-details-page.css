@@ -66,11 +66,11 @@ body{
 }
 
 /* 商品資料按鈕 */
-.nav-link,
+/* .nav-link,
 .nav-link:hover,
 .nav-link:active{
   color: #ff86a2
-}
+} */
 
 .card {
   border: none;
