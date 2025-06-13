@@ -43,10 +43,6 @@ body{
   pointer-events: none;
 }
 
-
-
-
-
 #addToCartBtn,
 .btn-outline-primary{
   background-color: #f8a1b5;
@@ -61,6 +57,19 @@ body{
 .btn-outline-primary:hover {
   background-color: #ffedf1; 
   color: #f8a1b5; 
+}
+
+#addToCartBtn.active,
+.btn-outline-primary.active {
+  background-color: #ffedf1; 
+  color: #f8a1b5; 
+}
+
+/* 商品資料按鈕 */
+.nav-link,
+.nav-link:hover,
+.nav-link:active{
+  color: #ff86a2
 }
 
 .card {
