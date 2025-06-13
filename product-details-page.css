@@ -71,7 +71,7 @@ body{
 .badge-notification {
   position: relative;
   top: -10px;
-  left: -5px;
+  left: 3px;
 }
 
 .square-image {
