@@ -44,8 +44,8 @@ body{
 
 #addToCartBtn:hover,
 .btn-outline-primary:hover {
-  background-color: #ffedf1; 
-  color: #f8a1b5; 
+  background-color: #ffedf1 !important; 
+  color: #f8a1b5 !important; 
 }
 
 #addToCartBtn.active,
