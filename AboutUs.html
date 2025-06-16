@@ -167,7 +167,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       </nav>
 
 <section class="about-us">
-  <h2>關於我們</h2>
+  <div id="root"></div>
+  
+  <!-- React code -->
+  <script type="text/babel">
+    function App() {
+      return <h2>關於我們</h2>;
+    }
+    
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
   <p>
     在KidTrendz，我們相信每個孩子都值得被繽紛與舒適擁抱。創立於2018年，我們從一間小小的工作室起步，如今成長為專注0-12歲兒童時尚的電商品牌。創辦人Eva身為兩個孩子的母親，親身經歷了尋找「既時髦又耐穿」童裝的挫折——於是KidTrendz誕生了：一個讓父母輕鬆選購，讓孩子自由探索世界的時尚夥伴。
   </p>
